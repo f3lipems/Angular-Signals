@@ -1,9 +1,15 @@
 <h1>
   Counter Signal Content: {{ counterSignal() }};
 </h1>
-<h2>
+<h1>
+  Counter Signal Observable Content: {{ counterSignal$ | async }};
+</h1>
+<h1>
+  Counter Signal Content from Observable: {{ counterSignalFromObservable() }};
+</h1>
+<h1>
   Computed Counter Signal Content: {{ computedSignal() }};
-</h2>
+</h1>
 
 <div style="margin-top: 1rem;">
   <button (click)="signalSet()">Change value to 0</button>
