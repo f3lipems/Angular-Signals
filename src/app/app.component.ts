@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, effect, signal } from '@angular/core';
 import { CommonModule, JsonPipe } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
@@ -13,7 +13,14 @@ export class AppComponent {
   title = 'signals';
 
   protected counterSignal = signal(1);
-  protected objectSignal = signal({action: 'none', value: 1});
+  protected computedSignal = computed(() => `${this.counterSignal()} computed!`);
+
+  constructor() {
+    // Effect: Work like a trigger for the Signal;
+    effect(() => {
+      console.log(`altered in effect: ${this.counterSignal()}`);
+    })
+  }
 
   // Set: Add new value to Signal
   signalSet() {
